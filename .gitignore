@@ -6,3 +6,7 @@
 /.tx
 /translations
 /venv
+.idea/
+build/
+dist/
+wagtailtinymce.egg-info/
