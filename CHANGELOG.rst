@@ -1,6 +1,12 @@
 Changes
 =======
 
+4.7.13.9 (2021-02-18)
+---------------------
+
+- Add format_value method to TinyMCERichTextArea so it can be rendered correctly on latest wagtail versions
+that relies on telepath to render Streamfield blocks
+
 4.7.13.8 (2021-01-24)
 ---------------------
 

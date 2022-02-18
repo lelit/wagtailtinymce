@@ -30,18 +30,17 @@ import json
 from django.conf import settings
 from django.forms import widgets
 from django.utils import translation
-from wagtail.utils.widgets import WidgetWithScript
-
 from wagtail import __version__ as WAGTAIL_VERSION
+from wagtail.utils.widgets import WidgetWithScript
 
 if WAGTAIL_VERSION >= '2.0':
     from wagtail.admin.edit_handlers import RichTextFieldPanel
-    from wagtail.admin.rich_text.converters.editor_html import EditorHTMLConverter
+    from wagtail.admin.rich_text.converters.editor_html import \
+        EditorHTMLConverter
     from wagtail.core.rich_text import features
 else:
     from wagtail.wagtailadmin.edit_handlers import RichTextFieldPanel
-    from wagtail.wagtailcore.rich_text import DbWhitelister
-    from wagtail.wagtailcore.rich_text import expand_db_html
+    from wagtail.wagtailcore.rich_text import DbWhitelister, expand_db_html
 
 
 class TinyMCERichTextArea(WidgetWithScript, widgets.Textarea):
@@ -135,3 +134,13 @@ class TinyMCERichTextArea(WidgetWithScript, widgets.Textarea):
             return self.converter.to_database_format(original_value)
         else:
             return DbWhitelister.clean(original_value)
+
+    def format_value(self, value):
+        # Convert database rich text representation to the format required by
+        # the input field
+        value = super().format_value(value)
+
+        if value is None:
+            value = ""
+
+        return self.converter.from_database_format(value)

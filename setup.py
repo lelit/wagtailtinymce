@@ -27,7 +27,7 @@
 import codecs
 
 try:
-    from setuptools import setup, find_packages
+    from setuptools import find_packages, setup
 except ImportError:
     from distutils.core import setup
 
@@ -46,7 +46,7 @@ install_requires = [
 
 setup(
     name='wagtailtinymce',
-    version='4.7.13.8',
+    version='4.7.13.9',
     description='A TinyMCE editor integration for Wagtail',
     author='Richard Mitchell',
     author_email='richard.mitchell@isotoma.com',
