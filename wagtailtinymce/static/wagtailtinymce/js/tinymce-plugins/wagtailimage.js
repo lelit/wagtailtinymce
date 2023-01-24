@@ -83,7 +83,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     urlParams: urlParams,
                     onload: IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
                     responses: {
-                        imageChosen: function(imageData) {
+                        chosen: function(imageData) {
                             var elem = $(imageData.html).get(0);
                             editor.undoManager.transact(function() {
                                 editor.focus();
