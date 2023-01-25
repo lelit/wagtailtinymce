@@ -65,17 +65,29 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     urlParams = {
                         select_format: true
                     };
-                    // otherwise target immediate child of nearest div container
-                    $targetNode = $currentNode.parentsUntil('div:not([data-embedtype])').not('body,html').last();
-                    if (0 == $targetNode.length) {
-                        // otherwise target current node
-                        $targetNode = $currentNode;
+                    if ($currentNode.prop('tagName') == 'A') {
+                        // current node is an anchor, put the image inside as the only child
+                        insertElement = function(elem) {
+                            $currentNode.empty();
+                            $currentNode.append(elem);
+                            mceSelection.select(elem);
+                        };
+                    } else {
+                        // otherwise target immediate child of nearest div container or table row
+                        $targetNode = $currentNode
+                            .parentsUntil('div:not([data-embedtype]),tr')
+                            .not('body,html')
+                            .last();
+                        if (0 == $targetNode.length) {
+                            // otherwise target current node
+                            $targetNode = $currentNode;
+                        }
+                        // select and insert before target
+                        insertElement = function(elem) {
+                            $(elem).insertBefore($targetNode);
+                            mceSelection.select(elem);
+                        };
                     }
-                    // select and insert after target
-                    insertElement = function(elem) {
-                        $(elem).insertBefore($targetNode);
-                        mceSelection.select(elem);
-                    };
                 }
 
                 ModalWorkflow({
