@@ -4,8 +4,10 @@
 /* Move the fullscreen TinyMCE editor to the left, to fit nicely with the sidebar. */
 div.mce-tinymce.mce-container.mce-panel.mce-fullscreen {
     left: 200px;
+    width: calc(100% - 200px);
 }
 
 body.sidebar-collapsed div.mce-tinymce.mce-container.mce-panel.mce-fullscreen {
     left: 60px;
+    width: calc(100% - 60px);
 }
