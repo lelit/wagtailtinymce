@@ -34,10 +34,10 @@ from wagtail import __version__ as WAGTAIL_VERSION
 from wagtail.utils.widgets import WidgetWithScript
 
 if WAGTAIL_VERSION >= '2.0':
-    from wagtail.admin.edit_handlers import RichTextFieldPanel
+    from wagtail.admin.panels import RichTextFieldPanel
     from wagtail.admin.rich_text.converters.editor_html import \
         EditorHTMLConverter
-    from wagtail.core.rich_text import features
+    from wagtail.rich_text import features
 else:
     from wagtail.wagtailadmin.edit_handlers import RichTextFieldPanel
     from wagtail.wagtailcore.rich_text import DbWhitelister, expand_db_html
