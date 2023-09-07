@@ -27,6 +27,7 @@
 import json
 
 from django import __version__ as DJANGO_VERSION
+from django.conf import settings
 from django.templatetags.static import static
 from django.utils import translation
 from django.utils.html import escape
@@ -85,7 +86,7 @@ def insert_editor_js():
         '    window.tinymce.suffix = "";'
         '}}());'
         '</script>',
-        to_js_primitive(static('wagtailtinymce/js/vendor/tinymce')),
+        to_js_primitive(settings.STATIC_URL + 'wagtailtinymce/js/vendor/tinymce'),
     )
     js_includes = _format_js_includes([
         'wagtailtinymce/js/vendor/tinymce/jquery.tinymce.min.js',
