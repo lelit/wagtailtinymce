@@ -78,7 +78,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     urlParams: urlParams,
                     onload: EMBED_CHOOSER_MODAL_ONLOAD_HANDLERS,
                     responses: {
-                        embedChosen: function(embedData) {
+                        chosen: function(embedData) {
                             var elem = $(embedData).get(0);
                             editor.undoManager.transact(function() {
                                 editor.focus();

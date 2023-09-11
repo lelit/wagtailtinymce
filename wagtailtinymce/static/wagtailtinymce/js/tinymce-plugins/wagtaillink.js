@@ -133,7 +133,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     urlParams: urlParams,
                     onload: PAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
                     responses: {
-                        pageChosen: function(pageData) {
+                        chosen: function(pageData) {
                             editor.undoManager.transact(function() {
                                 editor.focus();
                                 insertElement(createLink(pageData, currentText));
