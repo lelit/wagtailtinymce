@@ -44,7 +44,7 @@ else:
 
 if WAGTAIL_VERSION >= '2.0':
     from wagtail.admin.templatetags.wagtailadmin_tags import hook_output
-    from wagtail.core import hooks
+    from wagtail import hooks
 else:
     from wagtail.wagtailadmin.templatetags.wagtailadmin_tags import hook_output
     from wagtail.wagtailcore import hooks
