@@ -34,12 +34,12 @@ from wagtail import __version__ as WAGTAIL_VERSION
 from wagtail.utils.widgets import WidgetWithScript
 
 if WAGTAIL_VERSION >= '2.0':
-    from wagtail.admin.panels import RichTextFieldPanel
+    from wagtail.admin.panels import FieldPanel
     from wagtail.admin.rich_text.converters.editor_html import \
         EditorHTMLConverter
     from wagtail.rich_text import features
 else:
-    from wagtail.wagtailadmin.edit_handlers import RichTextFieldPanel
+    from wagtail.wagtailadmin.edit_handlers import RichTextFieldPanel as FieldPanel
     from wagtail.wagtailcore.rich_text import DbWhitelister, expand_db_html
 
 
@@ -85,7 +85,7 @@ class TinyMCERichTextArea(WidgetWithScript, widgets.Textarea):
                 self.converter = EditorHTMLConverter(self.features)
 
     def get_panel(self):
-        return RichTextFieldPanel
+        return FieldPanel
 
     def render(self, name, value, attrs=None, renderer=None):
         if value is None:
